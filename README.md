@@ -11,6 +11,8 @@
 [![MIT](https://img.shields.io/badge/license-MIT-171716?style=flat-square)](LICENSE)
 </div>
 
+[Open the live studio ↗](https://harshareddy0405.github.io/motion-prompt/) · [Engineering notes](docs/ENGINEERING.md) · [Quality checks](https://github.com/harshareddy0405/motion-prompt/actions)
+
 ## Direct before you generate
 
 Text-to-video prompting often jumps from a loose paragraph straight to an expensive generation. Motion Prompt puts a **director’s desk** in the middle: scenes, pacing, camera, movement, light, palette, continuity, and constraints become visible decisions before a model receives anything.
