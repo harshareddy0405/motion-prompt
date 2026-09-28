@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Motion Prompt — a cinematic storyboard and AI video prompt design studio."
+    />
+    <meta name="theme-color" content="#e8e1d4" />
+    <title>Motion Prompt — Direct the idea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="focus.css" />
+    <link rel="stylesheet" href="quality.css" />
+  </head>
+  <body>
+    <a class="skip" href="#stage">Skip to storyboard</a>
+    <header>
+      <a class="brand" href="#"
+        ><span class="brand-icon">M</span
+        ><span
+          ><strong>Motion Prompt</strong><small>DIRECTOR’S DESK</small></span
+        ></a
+      >
+      <div class="project-name">
+        <span>PROJECT /</span
+        ><strong id="projectName">Solis — launch film</strong
+        ><button id="renameProject" aria-label="Rename project">✎</button>
+      </div>
+      <div class="header-actions">
+        <span class="local"><i></i> LOCAL DRAFT</span
+        ><button class="ghost" id="exportButton">Export</button
+        ><button class="primary" id="compileButton">
+          Compile prompt <span>↗</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="desk">
+      <aside class="scenes-panel">
+        <div class="panel-head">
+          <div>
+            <p>STORYBOARD</p>
+            <h1>Scenes <span id="sceneCount">04</span></h1>
+          </div>
+          <button id="addScene" aria-label="Add scene">+</button>
+        </div>
+        <div class="film-meta">
+          <span><b id="totalDuration">18s</b> runtime</span
+          ><span><b>16:9</b> canvas</span>
+        </div>
+        <div class="scene-list" id="sceneList"></div>
+        <button class="new-scene" id="addSceneBottom">
+          <span>＋</span> Add another beat
+        </button>
+        <div class="keyboard-note">
+          <span>↑ ↓</span> Navigate <span>D</span> Duplicate
+          <span>⌫</span> Delete
+        </div>
+      </aside>
+
+      <section class="editor">
+        <div class="stage-toolbar">
+          <div>
+            <span class="live-dot"></span><strong>FRAME PREVIEW</strong
+            ><small id="frameLabel">SCENE 01 / 04</small>
+          </div>
+          <div class="view-tools">
+            <button class="mobile-direction" id="openDirector">Direction</button
+            ><button class="active" data-ratio="16/9">16:9</button
+            ><button data-ratio="9/16">9:16</button
+            ><button data-ratio="1/1">1:1</button
+            ><button id="fullscreenButton" aria-label="Focus preview">⌗</button>
+          </div>
+        </div>
+        <section class="stage-wrap" id="stage">
+          <div
+            class="stage"
+            id="visualStage"
+            role="img"
+            aria-label="Deterministic abstract preview for the selected scene"
+          >
+            <div class="grain"></div>
+            <div class="sun"></div>
+            <div class="horizon"></div>
+            <div class="subject"><i></i></div>
+            <div class="flare"></div>
+            <div class="frame-copy">
+              <span id="stageTimecode">00:00:00:00</span>
+              <h2 id="stageTitle">First light</h2>
+              <p id="stageCaption">A quiet horizon wakes in amber.</p>
+            </div>
+            <div class="safe-frame"></div>
+          </div>
+          <button
+            class="stage-play"
+            id="playButton"
+            aria-label="Play storyboard"
+          >
+            <span>▶</span>
+          </button>
+          <div class="stage-badge" id="stageBadge">WIDE · SLOW PUSH · 4S</div>
+          <button
+            class="focus-close"
+            id="focusClose"
+            aria-label="Exit focus preview"
+          >
+            ×
+          </button>
+        </section>
+
+        <section class="timeline-section">
+          <div class="timeline-head">
+            <div>
+              <p>SEQUENCE</p>
+              <strong id="playheadText">00:00 / 00:18</strong>
+            </div>
+            <div>
+              <button id="previousScene" aria-label="Previous scene">←</button
+              ><button id="timelinePlay">▶ Play all</button
+              ><button id="nextScene" aria-label="Next scene">→</button>
+            </div>
+          </div>
+          <div class="ruler" id="ruler"></div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+      </section>
+
+      <aside class="director-panel">
+        <div class="director-head">
+          <div>
+            <p>DIRECTION</p>
+            <h2 id="directionTitle">Scene 01</h2>
+          </div>
+          <button id="moreButton">•••</button>
+        </div>
+        <label class="field"
+          >Scene title<input id="titleInput" maxlength="40"
+        /></label>
+        <label class="field"
+          >Creative direction<textarea
+            id="directionInput"
+            maxlength="180"
+          ></textarea>
+        </label>
+        <div class="field-grid">
+          <label class="field"
+            >Shot<select id="shotInput">
+              <option>Extreme wide</option>
+              <option>Wide</option>
+              <option>Medium</option>
+              <option>Close-up</option>
+              <option>Macro</option>
+              <option>Overhead</option>
+            </select></label
+          ><label class="field"
+            >Movement<select id="movementInput">
+              <option>Static</option>
+              <option>Slow push</option>
+              <option>Pull back</option>
+              <option>Orbit</option>
+              <option>Handheld drift</option>
+              <option>Crane up</option>
+            </select></label
+          >
+        </div>
+        <label class="field"
+          >Light<select id="lightInput">
+            <option>Golden dawn</option>
+            <option>Soft overcast</option>
+            <option>Hard noon</option>
+            <option>Blue hour</option>
+            <option>Neon night</option>
+            <option>Studio softbox</option>
+          </select></label
+        >
+        <div class="field">
+          <span class="field-label">Palette</span>
+          <div class="palettes" id="palettes">
+            <button
+              class="active"
+              data-palette="amber"
+              style="--a: #e79a53; --b: #202b35"
+              aria-label="Amber and navy"
+            ></button
+            ><button
+              data-palette="ocean"
+              style="--a: #66b5c7; --b: #142d4a"
+              aria-label="Ocean blue"
+            ></button
+            ><button
+              data-palette="rose"
+              style="--a: #ec8895; --b: #572945"
+              aria-label="Rose dusk"
+            ></button
+            ><button
+              data-palette="mono"
+              style="--a: #d7d4cc; --b: #242424"
+              aria-label="Monochrome"
+            ></button
+            ><button
+              data-palette="acid"
+              style="--a: #c8e76d; --b: #29351f"
+              aria-label="Acid green"
+            ></button>
+          </div>
+        </div>
+        <label class="field duration-field"
+          ><span>Duration <output id="durationOutput">4 seconds</output></span
+          ><input
+            id="durationInput"
+            type="range"
+            min="2"
+            max="10"
+            step="1"
+            value="4"
+        /></label>
+        <div class="seed-row">
+          <span>Visual seed <b id="seedValue">3481</b></span
+          ><button id="remixButton">↻ Remix frame</button>
+        </div>
+        <div class="director-actions">
+          <button id="moveUp" title="Move scene earlier">↑ Earlier</button
+          ><button id="duplicateScene">Duplicate</button
+          ><button id="deleteScene" class="danger">Delete</button
+          ><button id="moveDown" title="Move scene later">Later ↓</button>
+        </div>
+        <div class="honesty">
+          <i>i</i>
+          <p>
+            <strong>Preview, not generation.</strong> Artwork is a deterministic
+            local composition. Connect a video model only after reviewing the
+            compiled prompt.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <div class="toast-zone" id="toastZone" aria-live="polite"></div>
+    <dialog id="promptDialog">
+      <div class="modal-head">
+        <div>
+          <p>COMPILED DIRECTION</p>
+          <h2>Your production prompt</h2>
+        </div>
+        <button id="closePrompt" aria-label="Close">×</button>
+      </div>
+      <p class="modal-copy">
+        A structured, model-agnostic brief assembled from every scene.
+      </p>
+      <div class="prompt-tabs">
+        <button class="active" data-format="treatment">Treatment</button
+        ><button data-format="compact">Compact</button>
+      </div>
+      <pre id="compiledPrompt"></pre>
+      <div class="modal-footer">
+        <span id="promptStats">0 words · 4 scenes</span>
+        <div>
+          <button class="ghost" id="downloadPrompt">Download .txt</button
+          ><button class="primary" id="copyPrompt">Copy prompt</button>
+        </div>
+      </div>
+    </dialog>
+    <script src="storage.js"></script>
+    <script src="schema.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+.stage-wrap.focus {
+  position: fixed;
+  z-index: 60;
+  inset: 68px 0 0;
+  padding: 38px;
+  background: #222220;
+}
+
+.mobile-direction {
+  display: none;
+}
+
+.focus-close {
+  display: none;
+}
+
+.stage-wrap.focus .focus-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(12, 12, 12, 0.65);
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 1050px) {
+  .mobile-direction {
+    display: block;
+    min-width: 62px !important;
+    color: #d95138 !important;
+  }
+}
